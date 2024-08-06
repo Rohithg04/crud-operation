@@ -12,5 +12,6 @@ def dash(request):
      return render(request,'dash.html')
 
 def submit(request):
-    form=WaterLand
+    form=WaterLand()
+    if request
     return render(request,'submit.html',{'form':form})
