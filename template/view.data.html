@@ -1,0 +1,41 @@
+{% extends 'dash.html' %}
+
+{% block content %}
+
+<table class="table">
+  <thead>
+    <tr>
+        <th scope="col">Sl.No</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Ride Name</th>
+      <th scope="col">Ticket Price</th>
+       <th scope="col">Timing</th>
+         <th scope="col">Category</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for i in data %}
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{i.name}}</td>
+       <td>{{i.age}}</td>
+       <td>{{i.rides_name}}</td>
+       <td>{{i.ticket_price}}</td>
+        <td>{{i.timing}}</td>
+        <td>{{i.category}}</td>
+        <td>
+            <form action="{% url 'WaterLand_delete' i.id %}" method="POST" >
+                {% csrf_token %}
+                <button type = "submit">Delete</button>
+            </form>
+        </td>
+        <td>
+            <a href = "{% url 'WaterLand_update' i.id %}" class="btn btn-danger">Update</a>
+        </td>
+    </tr>
+
+  </tbody>
+   {% endfor %}
+</table>
+{% endblock %}
